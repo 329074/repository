@@ -4,8 +4,152 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85f4775b836777f0b0ed223ae1bf98b1",
+    "content-hash": "87c7c3b9410e2338e3efb7ad90841ee6",
     "packages": [
+        {
+            "name": "afrux/asirem",
+            "version": "v0.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/afrux/asirem.git",
+                "reference": "31e5baa5d009a44b7c74d6e68aafcd5f9822654c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/afrux/asirem/zipball/31e5baa5d009a44b7c74d6e68aafcd5f9822654c",
+                "reference": "31e5baa5d009a44b7c74d6e68aafcd5f9822654c",
+                "shasum": ""
+            },
+            "require": {
+                "afrux/flarum-theme-base": "^0.1.0",
+                "flarum/core": "^1.8.0"
+            },
+            "require-dev": {
+                "afrux/flarum-theme-base": "0.1.x-dev",
+                "sycho/flarum-uikit": "0.1.x-dev"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                },
+                "flarum-extension": {
+                    "title": "Asirem",
+                    "category": "theme",
+                    "optional-dependencies": [
+                        "flarum/tags",
+                        "flarum/approval",
+                        "sycho/flarum-advanced-extension-categories"
+                    ],
+                    "icon": {
+                        "image": "icon.svg"
+                    }
+                },
+                "flarum-cli": {
+                    "modules": {
+                        "admin": true,
+                        "forum": true,
+                        "js": true,
+                        "jsCommon": false,
+                        "css": true,
+                        "gitConf": true,
+                        "githubActions": true,
+                        "prettier": true,
+                        "typescript": true,
+                        "bundlewatch": false,
+                        "backendTesting": false,
+                        "editorConfig": true,
+                        "styleci": true
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Afrux\\Asirem\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sami Mazouz",
+                    "email": "ilyasmazouz@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The weird Flarum theme made with potatoes as fuel, by Afrux.",
+            "keywords": [
+                "flarum"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/27939",
+                "issues": "https://github.com/afrux/asirem/issues",
+                "source": "https://github.com/afrux/asirem"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/sycho",
+                    "type": "other"
+                }
+            ],
+            "time": "2023-05-21T13:01:36+00:00"
+        },
+        {
+            "name": "afrux/flarum-theme-base",
+            "version": "v0.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/afrux/flarum-theme-base.git",
+                "reference": "f71a9706354f274a5d45b33c99c3dbd3dec1ba72"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/afrux/flarum-theme-base/zipball/f71a9706354f274a5d45b33c99c3dbd3dec1ba72",
+                "reference": "f71a9706354f274a5d45b33c99c3dbd3dec1ba72",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^1.0.0"
+            },
+            "suggest": {
+                "sycho/flarum-advanced-extension-categories": "Allows different categorization for dashboard extensions."
+            },
+            "type": "flarum-library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Afrux\\ThemeBase\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sami Mazouz",
+                    "email": "ilyasmazouz@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Base package for shared code between Afrux themes",
+            "keywords": [
+                "base",
+                "flarum",
+                "themes"
+            ],
+            "support": {
+                "issues": "https://github.com/afrux/flarum-theme-base/issues",
+                "source": "https://github.com/afrux/flarum-theme-base/tree/v0.1.8"
+            },
+            "time": "2023-05-21T13:12:08+00:00"
+        },
         {
             "name": "axy/backtrace",
             "version": "2.0.0",

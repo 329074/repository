@@ -233,6 +233,11 @@ class ComposerStaticInite665b29cfb4bd639aa7583c8b62a2c1f
         array (
             'Brick\\Math\\' => 11,
         ),
+        'A' => 
+        array (
+            'Afrux\\ThemeBase\\' => 16,
+            'Afrux\\Asirem\\' => 13,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -709,6 +714,14 @@ class ComposerStaticInite665b29cfb4bd639aa7583c8b62a2c1f
         'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'Afrux\\ThemeBase\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/afrux/flarum-theme-base/src',
+        ),
+        'Afrux\\Asirem\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/afrux/asirem/src',
         ),
     );
 

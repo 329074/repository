@@ -123,4 +123,6 @@ return array(
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
+    'Afrux\\ThemeBase\\' => array($vendorDir . '/afrux/flarum-theme-base/src'),
+    'Afrux\\Asirem\\' => array($vendorDir . '/afrux/asirem/src'),
 );

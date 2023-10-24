@@ -11,7 +11,7 @@
  Target Server Version : 50726 (5.7.26)
  File Encoding         : 65001
 
- Date: 23/10/2023 15:48:50
+ Date: 24/10/2023 11:01:16
 */
 
 SET NAMES utf8mb4;
@@ -36,12 +36,12 @@ CREATE TABLE `f_access_tokens`  (
   INDEX `F_access_tokens_user_id_foreign`(`user_id`) USING BTREE,
   INDEX `F_access_tokens_type_index`(`type`) USING BTREE,
   CONSTRAINT `F_access_tokens_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `f_users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of f_access_tokens
 -- ----------------------------
-INSERT INTO `f_access_tokens` VALUES (1, 'woNU2xcBGQyaFitUysXwVeSvP9XyTM5AJrGtssqc', 1, '2023-10-23 07:47:03', '2023-10-23 07:35:08', 'session_remember', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.61');
+INSERT INTO `f_access_tokens` VALUES (2, 'D4nzjc7VAMlWWZYQePSOPaTdvCuV7ligqjoNG3B1', 1, '2023-10-24 02:59:24', '2023-10-24 02:43:53', 'session', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.61');
 
 -- ----------------------------
 -- Table structure for f_api_keys
@@ -82,6 +82,7 @@ CREATE TABLE `f_discussion_tag`  (
 -- ----------------------------
 -- Records of f_discussion_tag
 -- ----------------------------
+INSERT INTO `f_discussion_tag` VALUES (1, 2, '2023-10-24 10:40:40');
 
 -- ----------------------------
 -- Table structure for f_discussion_user
@@ -102,7 +103,7 @@ CREATE TABLE `f_discussion_user`  (
 -- ----------------------------
 -- Records of f_discussion_user
 -- ----------------------------
-INSERT INTO `f_discussion_user` VALUES (1, 1, '2023-10-23 07:39:06', 1, NULL);
+INSERT INTO `f_discussion_user` VALUES (1, 1, '2023-10-24 02:44:07', 2, NULL);
 
 -- ----------------------------
 -- Table structure for f_discussions
@@ -220,6 +221,7 @@ INSERT INTO `f_group_permission` VALUES (3, 'discussion.replyWithoutApproval', '
 INSERT INTO `f_group_permission` VALUES (3, 'discussion.startWithoutApproval', '2023-10-23 15:35:09');
 INSERT INTO `f_group_permission` VALUES (3, 'searchUsers', NULL);
 INSERT INTO `f_group_permission` VALUES (3, 'startDiscussion', NULL);
+INSERT INTO `f_group_permission` VALUES (3, 'user.editOwnNickname', '2023-10-23 17:40:58');
 INSERT INTO `f_group_permission` VALUES (4, 'discussion.approvePosts', '2023-10-23 15:35:09');
 INSERT INTO `f_group_permission` VALUES (4, 'discussion.editPosts', NULL);
 INSERT INTO `f_group_permission` VALUES (4, 'discussion.hide', NULL);
@@ -307,7 +309,7 @@ CREATE TABLE `f_migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `extension` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 139 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 142 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of f_migrations
@@ -448,6 +450,9 @@ INSERT INTO `f_migrations` VALUES (135, '2018_06_27_100600_rename_posts_likes_to
 INSERT INTO `f_migrations` VALUES (136, '2018_06_27_100700_change_post_likes_add_foreign_keys', 'flarum-likes');
 INSERT INTO `f_migrations` VALUES (137, '2021_05_10_094200_add_created_at_to_post_likes_table', 'flarum-likes');
 INSERT INTO `f_migrations` VALUES (138, '2018_09_29_060444_replace_emoji_shorcuts_with_unicode', 'flarum-emoji');
+INSERT INTO `f_migrations` VALUES (139, '2020_11_23_000000_add_nickname_column', 'flarum-nicknames');
+INSERT INTO `f_migrations` VALUES (140, '2020_12_02_000001_set_default_permissions', 'flarum-nicknames');
+INSERT INTO `f_migrations` VALUES (141, '2021_11_16_000000_nickname_column_nullable', 'flarum-nicknames');
 
 -- ----------------------------
 -- Table structure for f_notifications
@@ -562,6 +567,7 @@ CREATE TABLE `f_post_mentions_tag`  (
 -- ----------------------------
 -- Records of f_post_mentions_tag
 -- ----------------------------
+INSERT INTO `f_post_mentions_tag` VALUES (2, 2, '2023-10-24 10:40:40');
 
 -- ----------------------------
 -- Table structure for f_post_mentions_user
@@ -631,12 +637,13 @@ CREATE TABLE `f_posts`  (
   CONSTRAINT `F_posts_edited_user_id_foreign` FOREIGN KEY (`edited_user_id`) REFERENCES `f_users` (`id`) ON DELETE SET NULL ON UPDATE RESTRICT,
   CONSTRAINT `F_posts_hidden_user_id_foreign` FOREIGN KEY (`hidden_user_id`) REFERENCES `f_users` (`id`) ON DELETE SET NULL ON UPDATE RESTRICT,
   CONSTRAINT `F_posts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `f_users` (`id`) ON DELETE SET NULL ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of f_posts
 -- ----------------------------
-INSERT INTO `f_posts` VALUES (1, 1, 1, '2023-10-23 07:39:06', 1, 'comment', '<t><p>你好！</p></t>', NULL, NULL, NULL, NULL, '127.0.0.1', 0, 1);
+INSERT INTO `f_posts` VALUES (1, 1, 1, '2023-10-23 07:39:06', 1, 'comment', '<t><p>你好！！！</p>\n</t>', '2023-10-24 02:44:41', 1, NULL, NULL, '127.0.0.1', 0, 1);
+INSERT INTO `f_posts` VALUES (2, 1, 2, '2023-10-24 02:40:40', 1, 'discussionTagged', '[[],[2]]', NULL, NULL, NULL, NULL, NULL, 0, 1);
 
 -- ----------------------------
 -- Table structure for f_registration_tokens
@@ -669,6 +676,11 @@ CREATE TABLE `f_settings`  (
 -- ----------------------------
 -- Records of f_settings
 -- ----------------------------
+INSERT INTO `f_settings` VALUES ('afrux-theme-base.footer_bottom_line', '');
+INSERT INTO `f_settings` VALUES ('afrux-theme-base.footer_description', '');
+INSERT INTO `f_settings` VALUES ('afrux-theme-base.hero_banner', 'afrux_banner-qdbjs7li.png');
+INSERT INTO `f_settings` VALUES ('afrux-theme-base.hero_banner_position', 'center top');
+INSERT INTO `f_settings` VALUES ('afrux-theme-base.illuminateVersion', '{\"value\":\"v8.83.27\",\"lastComposerUpdate\":1698114290}');
 INSERT INTO `f_settings` VALUES ('allow_hide_own_posts', 'reply');
 INSERT INTO `f_settings` VALUES ('allow_post_editing', 'reply');
 INSERT INTO `f_settings` VALUES ('allow_renaming', '10');
@@ -677,22 +689,34 @@ INSERT INTO `f_settings` VALUES ('custom_less', '');
 INSERT INTO `f_settings` VALUES ('default_locale', 'en');
 INSERT INTO `f_settings` VALUES ('default_route', '/all');
 INSERT INTO `f_settings` VALUES ('display_name_driver', 'username');
-INSERT INTO `f_settings` VALUES ('extensions_enabled', '[\"flarum-flags\",\"flarum-approval\",\"flarum-tags\",\"flarum-suspend\",\"flarum-subscriptions\",\"flarum-sticky\",\"flarum-statistics\",\"flarum-mentions\",\"flarum-markdown\",\"flarum-lock\",\"flarum-likes\",\"flarum-lang-chinese-simplified\",\"flarum-emoji\",\"flarum-bbcode\"]');
+INSERT INTO `f_settings` VALUES ('extensions_enabled', '[\"flarum-flags\",\"flarum-approval\",\"flarum-tags\",\"flarum-suspend\",\"flarum-subscriptions\",\"flarum-sticky\",\"flarum-statistics\",\"flarum-pusher\",\"flarum-nicknames\",\"flarum-mentions\",\"flarum-markdown\",\"flarum-lock\",\"flarum-likes\",\"flarum-lang-chinese-simplified\",\"flarum-emoji\",\"flarum-bbcode\",\"afrux-asirem\"]');
+INSERT INTO `f_settings` VALUES ('favicon_path', 'favicon-y7cgvfju.png');
 INSERT INTO `f_settings` VALUES ('flarum-markdown.mdarea', '1');
 INSERT INTO `f_settings` VALUES ('flarum-mentions.allow_username_format', '1');
+INSERT INTO `f_settings` VALUES ('flarum-nicknames.random_username', '1');
+INSERT INTO `f_settings` VALUES ('flarum-nicknames.regex', '');
+INSERT INTO `f_settings` VALUES ('flarum-nicknames.unique', '1');
 INSERT INTO `f_settings` VALUES ('flarum-tags.max_primary_tags', '1');
 INSERT INTO `f_settings` VALUES ('flarum-tags.max_secondary_tags', '3');
 INSERT INTO `f_settings` VALUES ('flarum-tags.min_primary_tags', '1');
 INSERT INTO `f_settings` VALUES ('flarum-tags.min_secondary_tags', '0');
 INSERT INTO `f_settings` VALUES ('forum_description', '');
 INSERT INTO `f_settings` VALUES ('forum_title', '酆');
-INSERT INTO `f_settings` VALUES ('mail_driver', 'mail');
-INSERT INTO `f_settings` VALUES ('mail_from', 'noreply@test.com');
+INSERT INTO `f_settings` VALUES ('logo_path', 'logo-cytlj8ul.png');
+INSERT INTO `f_settings` VALUES ('mail_driver', 'smtp');
+INSERT INTO `f_settings` VALUES ('mail_encryption', 'ssl');
+INSERT INTO `f_settings` VALUES ('mail_from', '3290745769@qq.com');
+INSERT INTO `f_settings` VALUES ('mail_host', 'smtp.qq.com');
+INSERT INTO `f_settings` VALUES ('mail_password', 'zykuktjagcgjdbce');
+INSERT INTO `f_settings` VALUES ('mail_port', '465');
+INSERT INTO `f_settings` VALUES ('mail_username', '3290745769@qq.com');
+INSERT INTO `f_settings` VALUES ('show_language_selector', '1');
+INSERT INTO `f_settings` VALUES ('slug_driver_Flarum\\Discussion\\Discussion', 'utf8');
 INSERT INTO `f_settings` VALUES ('slug_driver_Flarum\\User\\User', 'default');
-INSERT INTO `f_settings` VALUES ('theme_colored_header', '0');
+INSERT INTO `f_settings` VALUES ('theme_colored_header', '1');
 INSERT INTO `f_settings` VALUES ('theme_dark_mode', '0');
-INSERT INTO `f_settings` VALUES ('theme_primary_color', '#4D698E');
-INSERT INTO `f_settings` VALUES ('theme_secondary_color', '#4D698E');
+INSERT INTO `f_settings` VALUES ('theme_primary_color', '#af09dc');
+INSERT INTO `f_settings` VALUES ('theme_secondary_color', '#d65fd8');
 INSERT INTO `f_settings` VALUES ('version', '1.8.3');
 INSERT INTO `f_settings` VALUES ('welcome_message', 'Enjoy your new forum! Hop over to discuss.flarum.org if you have any questions, or to join our community!');
 INSERT INTO `f_settings` VALUES ('welcome_title', 'Welcome to 酆');
@@ -748,12 +772,15 @@ CREATE TABLE `f_tags`  (
   CONSTRAINT `f_tags_last_posted_discussion_id_foreign` FOREIGN KEY (`last_posted_discussion_id`) REFERENCES `f_discussions` (`id`) ON DELETE SET NULL ON UPDATE RESTRICT,
   CONSTRAINT `f_tags_last_posted_user_id_foreign` FOREIGN KEY (`last_posted_user_id`) REFERENCES `f_users` (`id`) ON DELETE SET NULL ON UPDATE RESTRICT,
   CONSTRAINT `f_tags_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `f_tags` (`id`) ON DELETE SET NULL ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of f_tags
 -- ----------------------------
-INSERT INTO `f_tags` VALUES (1, 'General', 'general', NULL, '#888', NULL, NULL, 0, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `f_tags` VALUES (1, '游戏', 'Game', '', '#9956b8', NULL, NULL, 0, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, '', NULL, '2023-10-24 10:57:56');
+INSERT INTO `f_tags` VALUES (2, '新人报道', 'NewReports', '', '#c21414', NULL, NULL, 1, NULL, NULL, 0, 0, 1, '2023-10-23 07:39:06', 1, 1, '', '2023-10-24 10:39:15', '2023-10-24 10:57:56');
+INSERT INTO `f_tags` VALUES (3, 'CS2', 'cs2', '', '#5168d6', NULL, NULL, 1, 1, NULL, 0, 0, 0, NULL, NULL, NULL, '', '2023-10-24 10:56:47', '2023-10-24 10:57:56');
+INSERT INTO `f_tags` VALUES (4, 'APEX', 'apex', '', '#ec1f09', NULL, NULL, 0, 1, NULL, 0, 0, 0, NULL, NULL, NULL, '', '2023-10-24 10:57:07', '2023-10-24 10:57:56');
 
 -- ----------------------------
 -- Table structure for f_users
@@ -762,6 +789,7 @@ DROP TABLE IF EXISTS `f_users`;
 CREATE TABLE `f_users`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `email` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_email_confirmed` tinyint(1) NOT NULL DEFAULT 0,
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -783,12 +811,13 @@ CREATE TABLE `f_users`  (
   INDEX `F_users_joined_at_index`(`joined_at`) USING BTREE,
   INDEX `F_users_last_seen_at_index`(`last_seen_at`) USING BTREE,
   INDEX `F_users_discussion_count_index`(`discussion_count`) USING BTREE,
-  INDEX `F_users_comment_count_index`(`comment_count`) USING BTREE
+  INDEX `F_users_comment_count_index`(`comment_count`) USING BTREE,
+  INDEX `f_users_nickname_index`(`nickname`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of f_users
 -- ----------------------------
-INSERT INTO `f_users` VALUES (1, 'admin', '3290745769@qq.com', 1, '$2y$10$J83fEdTWKl3LVJbdhiUYb.Gu.H.8eSiz.vgp606MIYzKK39ZyeJOa', 'ZtT8eWJf9iYiSYzH.png', 0x7B22666F6C6C6F7741667465725265706C79223A66616C73652C22666C6172756D2D737562736372697074696F6E732E6E6F746966795F666F725F616C6C5F706F737473223A66616C73652C226E6F746966795F64697363757373696F6E52656E616D65645F616C657274223A747275652C226E6F746966795F7573657253757370656E6465645F616C657274223A747275652C226E6F746966795F7573657253757370656E6465645F656D61696C223A747275652C226E6F746966795F75736572556E73757370656E6465645F616C657274223A747275652C226E6F746966795F75736572556E73757370656E6465645F656D61696C223A747275652C226E6F746966795F6E6577506F73745F616C657274223A747275652C226E6F746966795F6E6577506F73745F656D61696C223A747275652C226E6F746966795F706F73744D656E74696F6E65645F616C657274223A747275652C226E6F746966795F706F73744D656E74696F6E65645F656D61696C223A66616C73652C226E6F746966795F757365724D656E74696F6E65645F616C657274223A747275652C226E6F746966795F757365724D656E74696F6E65645F656D61696C223A66616C73652C226E6F746966795F67726F75704D656E74696F6E65645F616C657274223A747275652C226E6F746966795F67726F75704D656E74696F6E65645F656D61696C223A66616C73652C226E6F746966795F64697363757373696F6E4C6F636B65645F616C657274223A747275652C226E6F746966795F706F73744C696B65645F616C657274223A747275652C22646973636C6F73654F6E6C696E65223A747275652C22696E64657850726F66696C65223A747275652C226C6F63616C65223A227A682D48616E73227D, '2023-10-23 07:35:08', '2023-10-23 07:46:49', NULL, NULL, 1, 1, NULL, NULL, NULL, NULL);
+INSERT INTO `f_users` VALUES (1, 'admin', NULL, '3290745769@qq.com', 1, '$2y$10$J83fEdTWKl3LVJbdhiUYb.Gu.H.8eSiz.vgp606MIYzKK39ZyeJOa', 'ZtT8eWJf9iYiSYzH.png', 0x7B22666F6C6C6F7741667465725265706C79223A66616C73652C22666C6172756D2D737562736372697074696F6E732E6E6F746966795F666F725F616C6C5F706F737473223A66616C73652C226E6F746966795F64697363757373696F6E52656E616D65645F616C657274223A747275652C226E6F746966795F7573657253757370656E6465645F616C657274223A747275652C226E6F746966795F7573657253757370656E6465645F656D61696C223A747275652C226E6F746966795F75736572556E73757370656E6465645F616C657274223A747275652C226E6F746966795F75736572556E73757370656E6465645F656D61696C223A747275652C226E6F746966795F6E6577506F73745F616C657274223A747275652C226E6F746966795F6E6577506F73745F656D61696C223A747275652C226E6F746966795F706F73744D656E74696F6E65645F616C657274223A747275652C226E6F746966795F706F73744D656E74696F6E65645F656D61696C223A66616C73652C226E6F746966795F757365724D656E74696F6E65645F616C657274223A747275652C226E6F746966795F757365724D656E74696F6E65645F656D61696C223A66616C73652C226E6F746966795F67726F75704D656E74696F6E65645F616C657274223A747275652C226E6F746966795F67726F75704D656E74696F6E65645F656D61696C223A66616C73652C226E6F746966795F64697363757373696F6E4C6F636B65645F616C657274223A747275652C226E6F746966795F706F73744C696B65645F616C657274223A747275652C22646973636C6F73654F6E6C696E65223A747275652C22696E64657850726F66696C65223A747275652C226C6F63616C65223A227A682D48616E73227D, '2023-10-23 07:35:08', '2023-10-24 02:57:53', NULL, '2023-10-24 02:35:09', 1, 1, '2023-10-24 02:35:07', NULL, NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
